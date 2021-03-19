@@ -1,6 +1,8 @@
 # Dependencies
 - g++ + make
 - Anything that supports normal c++ multithreading and random
+# Installing on windows
+Download smasher.exe from [here](https://github.com/linuxnoodle/prime95-ripoff/releases/latest)
 # Building
 ```
 git clone https://github.com/linuxnoodle/prime95-ripoff
