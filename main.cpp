@@ -61,24 +61,13 @@ int main(){
         
         HANDLE threads[threadCount];
         while (true){
-            // Yes, I know that it will only close threads when all of then are done.
-            // No, I probably won't fix this.
-            // Porting this over to windows was already way too much effort.
             for (int i = 0; i < threadCount; ++i){
-                threads[i] = CreateThread(
-                    NULL,
-                    0,
-                    threadStresser,
-                    NULL,
-                    0,
-                    NULL);
+                threads[i] = CreateThread(NULL, 0, threadStresser, NULL, 0, NULL);
                 if (threads[i] == NULL){
                     return -1;
+                } else {
+                    CloseHandle(threads[i]);
                 }
-            }
-            for (int i = 0; i < threadCount; ++i){
-                WaitForSingleObject(threads[i], INFINITE);
-                CloseHandle(threads[i]);
             }
         }
     #endif
